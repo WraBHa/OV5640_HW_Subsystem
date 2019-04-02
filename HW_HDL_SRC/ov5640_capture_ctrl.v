@@ -44,9 +44,14 @@ output       [16:0] vga_bram_waddr,
 
 output       [19:0] cpu_bram_wdata,
 output              cpu_bram_wen,
-output       [5:0]  cpu_bram_waddr,
+output       [5:0]  cpu_bram_waddr
 
     );
 
+wire         gpio_capture_req_p; // p for pulse
+wire         axil_capture_req_p;
+
+r_edge_capture p1(.clk(sys_clk), .i(gpio_capture_req), .o(gpio_capture_req_p));
+r_edge_capture p2(.clk(sys_clk), .i(axil_capture_req), .o(axil_capture_req_p));
 
 endmodule
