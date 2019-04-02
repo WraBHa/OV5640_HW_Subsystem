@@ -34,6 +34,8 @@ input               ov5640_sync,
 input               ov5640_href,
 input        [7:0]  ov5640_data,
 
+// vga IF
+
 // user GPIO input
 input               gpio_capture_req,
 
@@ -53,5 +55,6 @@ wire         axil_capture_req_p;
 
 r_edge_capture p1(.clk(sys_clk), .i(gpio_capture_req), .o(gpio_capture_req_p));
 r_edge_capture p2(.clk(sys_clk), .i(axil_capture_req), .o(axil_capture_req_p));
+
 
 endmodule
