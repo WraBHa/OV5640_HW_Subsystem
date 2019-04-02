@@ -56,5 +56,8 @@ wire         axil_capture_req_p;
 r_edge_capture p1(.clk(sys_clk), .i(gpio_capture_req), .o(gpio_capture_req_p));
 r_edge_capture p2(.clk(sys_clk), .i(axil_capture_req), .o(axil_capture_req_p));
 
-
+localparam   OV_IDLE     =  2'b00;
+localparam   OV_CAPTURE  =  2'b01;
+localparam   OV_READY    =  2'b11;
+    
 endmodule
