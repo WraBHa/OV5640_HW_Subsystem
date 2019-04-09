@@ -38,7 +38,7 @@ localparam     DELAY_2MS   = 200000;
 localparam     DELAY_6MS   = 600000;
 localparam     DELAY_20MS  = 2000000;
 
-reg  [21:0]    cnt;
+(*dont_touch = "true"*)reg  [21:0]    cnt;
 
 always @ (posedge sys_clk or posedge sys_rst) begin
 	if (sys_rst) begin

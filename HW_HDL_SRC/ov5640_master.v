@@ -49,7 +49,7 @@ ov5640_setup      setup_inst(
 	.ov5640_setup_done      (   ov5640_setup_done )
 );
 
-sccb_master  sccb_maste_inst(
+sccb_master  sccb_master_inst(
 	.sys_rst                (   sys_rst      ),
 	.sys_clk                (   sys_clk      ),
 

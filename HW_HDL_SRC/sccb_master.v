@@ -6,7 +6,8 @@ input          sys_clk,
 input          ov5640_setup_done,
 
 inout          sccb_siod,
-output   reg   sccb_sioc
+output   reg   sccb_sioc,
+output   reg   sccb_send_finish
 
 );
 
@@ -14,14 +15,13 @@ output   reg   sccb_sioc
 localparam     REGFILE_DEPTH = 302;
 localparam     BIT_LENGTH    = 42;
 
-reg  [16:0]     sccb_sioc_div; 
+(*dont_touch = "true"*)reg  [16:0]     sccb_sioc_div; 
                        // [10:0] used for soic div, [16:11] for bit cnt
 
-reg  [8:0]     sccb_cfg_addr;
+(*dont_touch = "true"*)reg  [8:0]     sccb_cfg_addr;
 wire [23:0]    sccb_cfg_data;
 
-reg  [41:0]    sccb_send_data;
-reg            sccb_send_finish;
+(*dont_touch = "true"*)reg  [41:0]    sccb_send_data;
 
 wire sccb_siod_i;
 
@@ -110,6 +110,8 @@ end
 // ********************** dbg ****************//
 // assign sccb_siod_ien_dbg = sccb_siod_ien;
 // *******************************************//
+wire sccb_siod_ien;
+
 assign sccb_siod_ien = (sccb_sioc_div[16:11] == 'd11) || (sccb_sioc_div[16:11] == 'd20) || 
                        (sccb_sioc_div[16:11] == 'd29) || (sccb_sioc_div[16:11] == 'd38);
                        
